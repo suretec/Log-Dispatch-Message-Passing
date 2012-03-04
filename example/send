@@ -12,7 +12,7 @@ $log->add(Log::Dispatch::Log::Stash->new(
       name      => 'myapp_aggregate_log',
       min_level => 'debug',
       output    => Log::Stash::Output::ZeroMQ->new(
-          connect => 'tcp://192.168.0.1:5558', # Central log server.
+          connect => 'tcp://127.0.0.1:5558', # Central log server.
       ),
 ));
 $log->warn($_) for qw/ foo bar baz /;
