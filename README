@@ -1,0 +1,92 @@
+NAME
+    Log::Dispatch::Log::Stash - log events to Log::Stash
+
+SYNOPSIS
+    In your application code:
+
+      use Log::Dispatch;
+      use Log::Dispatch::Log::Stash;
+      use Log::Stash::DSL;
+
+      my $log = Log::Dispatch->new;
+
+      $log->add(Log::Dispatch::Log::Stash->new(
+            name      => 'myapp_aggregate_log',
+            min_level => 'debug',
+            output    => log_chain {
+                output zmq => (
+                    class => 'ZeroMQ',
+                    connect => 'tcp://192.168.0.1:5558',
+                );
+            },
+      ));
+
+      $log->warn($_) for qw/ foo bar baz /;
+
+    On your central log server:
+
+      logstash --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output STDOUT > myapp_aggregate.log
+
+DESCRIPTION
+    This provides a Log::Dispatch log output system that sends logged events
+    to Log::Stash.
+
+    This allows you to use any of the Log::Stash emitters or filters to
+    process log events and send them across the network, and you can use the
+    toolkit to trivially construct a log aggregator.
+
+METHODS
+  "new"
+     my $table_log = Log::Dispatch::Log::Stash->new(\%arg);
+
+    This method constructs a new Log::Dispatch::Log::Stash output object.
+
+    Required arguments are:
+
+      output - a L<Log::Stash> OUTPUT class.
+
+  log_message
+    This is the method which performs the actual logging, as detailed by
+    Log::Dispatch::Output.
+
+SEE ALSO
+    Log::Stash
+        The logging framework itself, allowing you to very simply build log
+        aggregation and processing servers.
+
+    Log::Stash::Output::ZeroMQ
+        The recommended network protocol for aggregating or transporting
+        messages across the network.
+
+        Note that whilst this transport is recommended, it is NOT required
+        by this module, so you need to require (and depened on)
+        Log::Stash::ZeroMQ seperately.
+
+    example/ directory
+        Instantly runnable SYNOPSIS - plug into your application for easy
+        log aggregation.
+
+AUTHOR
+    Tomas Doran (t0m) "<bobtfish@bobtfish.net>"
+
+SPONSORSHIP
+    This module exists due to the wonderful people at Suretec Systems
+    <http://www.suretecsystems.com/> who sponsored it's development.
+
+COPYRIGHT
+    Copyright Suretec Systems 2012.
+
+LICENSE
+    GNU Affero General Public License, Version 3
+
+    If you feel this is too restrictive to be able to use this software,
+    please talk to us as we'd be willing to consider relicensing under less
+    restrictive terms.
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 111:
+        You forgot a '=back' before '=head1'
+

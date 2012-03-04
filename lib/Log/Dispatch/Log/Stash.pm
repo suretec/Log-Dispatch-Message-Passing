@@ -100,13 +100,15 @@ The recommended network protocol for aggregating or transporting messages
 across the network.
 
 Note that whilst this transport is recommended, it is B<NOT> required by
-this module, so you need to require (and depened on) L<Log::Stash::ZeroMQ>
-seperately.
+this module, so you need to require (and depend on) L<Log::Stash::ZeroMQ>
+separately.
 
 =item example/ directory
 
 Instantly runnable SYNOPSIS - plug into your application for easy log
 aggregation.
+
+=back
 
 =head1 AUTHOR
 
@@ -127,7 +129,7 @@ Copyright Suretec Systems 2012.
 GNU Affero General Public License, Version 3
 
 If you feel this is too restrictive to be able to use this software,
-please talk to us as we'd be willing to consider relicensing under
+please talk to us as we'd be willing to consider re-licensing under
 less restrictive terms.
 
 =cut
