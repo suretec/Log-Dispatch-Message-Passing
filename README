@@ -70,11 +70,14 @@ AUTHOR
     Tomas Doran (t0m) "<bobtfish@bobtfish.net>"
 
 SPONSORSHIP
-    This module exists due to the wonderful people at Suretec Systems
-    <http://www.suretecsystems.com/> who sponsored it's development.
+    This module exists due to the wonderful people at Suretec Systems Ltd.
+    <http://www.suretecsystems.com/> who sponsored it's development for its
+    VoIP division called SureVoIP <http://www.surevoip.co.uk/> for use with
+    the SureVoIP API - 
+    <http://www.surevoip.co.uk/support/wiki/api_documentation>
 
 COPYRIGHT
-    Copyright Suretec Systems 2012.
+    Copyright Suretec Systems Ltd. 2012.
 
 LICENSE
     GNU Affero General Public License, Version 3
