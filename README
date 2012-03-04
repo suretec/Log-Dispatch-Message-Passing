@@ -59,8 +59,8 @@ SEE ALSO
         messages across the network.
 
         Note that whilst this transport is recommended, it is NOT required
-        by this module, so you need to require (and depened on)
-        Log::Stash::ZeroMQ seperately.
+        by this module, so you need to require (and depend on)
+        Log::Stash::ZeroMQ separately.
 
     example/ directory
         Instantly runnable SYNOPSIS - plug into your application for easy
@@ -80,13 +80,6 @@ LICENSE
     GNU Affero General Public License, Version 3
 
     If you feel this is too restrictive to be able to use this software,
-    please talk to us as we'd be willing to consider relicensing under less
+    please talk to us as we'd be willing to consider re-licensing under less
     restrictive terms.
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 111:
-        You forgot a '=back' before '=head1'
 
