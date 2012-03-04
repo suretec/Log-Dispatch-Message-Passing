@@ -36,16 +36,19 @@ In your application code:
 
   use Log::Dispatch;
   use Log::Dispatch::Log::Stash;
-  use Log::Stash::Output::ZeroMQ;
+  use Log::Stash::DSL;
 
   my $log = Log::Dispatch->new;
 
   $log->add(Log::Dispatch::Log::Stash->new(
         name      => 'myapp_aggregate_log',
         min_level => 'debug',
-        output    => Log::Stash::Output::ZeroMQ=>new(
-            connect => 'tcp://192.168.0.1:5558', # Central log server.
-        ),
+        output    => log_chain {
+            output zmq => (
+                class => 'ZeroMQ',
+                connect => 'tcp://192.168.0.1:5558',
+            );
+        },
   ));
 
   $log->warn($_) for qw/ foo bar baz /;
