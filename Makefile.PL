@@ -1,10 +1,15 @@
 use strict;
 use warnings;
 use inc::Module::Install;
+use Module::Install::Authority;
+use Module::Install::AuthorRequires;
+use Module::Install::AuthorTests;
 
 all_from 'lib/Log/Dispatch/Log/Stash.pm';
 
 license 'AGPL_3';
+
+authority 'GHENRY';
 
 requires 'Log::Stash';
 requires 'Log::Dispatch';
