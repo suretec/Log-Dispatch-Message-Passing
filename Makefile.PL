@@ -16,6 +16,7 @@ requires 'Log::Dispatch';
 
 test_requires 'Test::More' => '0.88';
 
+author_requires 'Log::Message::Structured';
 author_requires 'Test::Pod' => '1.14';
 author_requires 'Test::NoTabs';
 author_requires 'Test::Pod::Coverage' => '1.04';
