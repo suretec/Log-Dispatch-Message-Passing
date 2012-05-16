@@ -10,6 +10,8 @@ our $VERSION = '0.001';
 sub new {
   my ($class, %arg) = @_;
   confess("Need an 'output' argument") unless $arg{output};
+  confess("output => $output must be an object which can ->consume")
+    unless blessed($arg{output}) && $arg{output}->can('consume');
 
   my $self = { output => $arg{output} };
 
