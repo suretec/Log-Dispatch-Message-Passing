@@ -13,6 +13,7 @@ authority 'GHENRY';
 
 requires 'Log::Stash';
 requires 'Log::Dispatch';
+requires 'Scalar::util';
 
 test_requires 'Test::More' => '0.88';
 

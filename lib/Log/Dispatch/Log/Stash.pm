@@ -3,6 +3,7 @@ use base qw(Log::Dispatch::Output);
 
 use warnings;
 use strict;
+use Scalar::Util qw/ blessed /;
 use Carp qw/ confess /;
 
 our $VERSION = '0.001';
@@ -10,10 +11,11 @@ our $VERSION = '0.001';
 sub new {
   my ($class, %arg) = @_;
   confess("Need an 'output' argument") unless $arg{output};
+  my $output = $arg{output};
   confess("output => $output must be an object which can ->consume")
-    unless blessed($arg{output}) && $arg{output}->can('consume');
+    unless blessed($output) && $output->can('consume');
 
-  my $self = { output => $arg{output} };
+  my $self = { output => $output };
 
   bless $self => $class;
 
