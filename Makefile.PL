@@ -5,13 +5,16 @@ use Module::Install::Authority;
 use Module::Install::AuthorRequires;
 use Module::Install::AuthorTests;
 
-all_from 'lib/Log/Dispatch/Log/Stash.pm';
+all_from 'lib/Log/Dispatch/Message/Passing.pm';
 
 license 'AGPL_3';
 
-authority 'GHENRY';
+authority('GHENRY');
+resources(
+    repository => "git://github.com/suretec/Log-Dispatch-Message-Passing.git",
+);
 
-requires 'Log::Stash';
+requires 'Message::Passing';
 requires 'Log::Dispatch';
 requires 'Scalar::util';
 
@@ -28,7 +31,7 @@ author_requires 'Test::Spelling';
 author_tests 't/author';
 
 if ($Module::Install::AUTHOR) {
-    system("pod2text lib/Log/Dispatch/Log/Stash.pm > README")
+    system("pod2text lib/Log/Dispatch/Message/Passing.pm > README")
         and die $!;
 }
 

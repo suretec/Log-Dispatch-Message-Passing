@@ -1,4 +1,4 @@
-package Log::Dispatch::Log::Stash;
+package Log::Dispatch::Message::Passing;
 use base qw(Log::Dispatch::Output);
 
 use warnings;
@@ -32,19 +32,19 @@ sub log_message {
 
 =head1 NAME
 
-Log::Dispatch::Log::Stash - log events to Log::Stash
+Log::Dispatch::Message::Passing - log events to Message::Passing
 
 =head1 SYNOPSIS
 
 In your application code:
 
   use Log::Dispatch;
-  use Log::Dispatch::Log::Stash;
-  use Log::Stash::DSL;
+  use Log::Dispatch::Message::Passing;
+  use Message::Passing::DSL;
 
   my $log = Log::Dispatch->new;
 
-  $log->add(Log::Dispatch::Log::Stash->new(
+  $log->add(Log::Dispatch::Message::Passing->new(
         name      => 'myapp_aggregate_log',
         min_level => 'debug',
         output    => log_chain {
@@ -64,9 +64,9 @@ On your central log server:
 =head1 DESCRIPTION
 
 This provides a Log::Dispatch log output system that sends logged events to
-L<Log::Stash>.
+L<Message::Passing>.
 
-This allows you to use any of the Log::Stash emitters or filters
+This allows you to use any of the Message::Passing emitters or filters
 to process log events and send them across the network, and you can use
 the toolkit to trivially construct a log aggregator.
 
@@ -74,13 +74,13 @@ the toolkit to trivially construct a log aggregator.
 
 =head2 C<< new >>
 
- my $table_log = Log::Dispatch::Log::Stash->new(\%arg);
+ my $table_log = Log::Dispatch::Message::Passing->new(\%arg);
 
-This method constructs a new Log::Dispatch::Log::Stash output object.
+This method constructs a new Log::Dispatch::Message::Passing output object.
 
 Required arguments are:
 
-  output - a L<Log::Stash> OUTPUT class.
+  output - a L<Message::Passing> OUTPUT class.
 
 =head2 log_message
 
@@ -93,18 +93,18 @@ Log::Dispatch::Output.
 
 =over
 
-=item L<Log::Stash>
+=item L<Message::Passing>
 
 The logging framework itself, allowing you to very simply build log
 aggregation and processing servers.
 
-=item L<Log::Stash::Output::ZeroMQ>
+=item L<Message::Passing::Output::ZeroMQ>
 
 The recommended network protocol for aggregating or transporting messages
 across the network.
 
 Note that whilst this transport is recommended, it is B<NOT> required by
-this module, so you need to require (and depend on) L<Log::Stash::ZeroMQ>
+this module, so you need to require (and depend on) L<Message::Passing::ZeroMQ>
 separately.
 
 =item example/ directory

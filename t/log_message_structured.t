@@ -13,14 +13,14 @@ BEGIN {
 use JSON qw/ decode_json /;
 use TestStorage;
 use Log::Dispatch;
-use Log::Dispatch::Log::Stash;
-use Log::Stash::Output::Test;
+use Log::Dispatch::Message::Passing;
+use Message::Passing::Output::Test;
 
 my $log = Log::Dispatch->new;
 
-my $test = Log::Stash::Output::Test->new;
+my $test = Message::Passing::Output::Test->new;
 
-$log->add(Log::Dispatch::Log::Stash->new(
+$log->add(Log::Dispatch::Message::Passing->new(
     name      => 'myapp_logstash',
     min_level => 'debug',
     output     => $test,
