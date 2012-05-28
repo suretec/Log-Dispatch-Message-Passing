@@ -25,7 +25,7 @@ SYNOPSIS
 
     On your central log server:
 
-      logstash --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output STDOUT > myapp_aggregate.log
+      message-pass --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output File --output_options '{"filename":"myapp_aggregate.log"}'
 
 DESCRIPTION
     This provides a Log::Dispatch log output system that sends logged events
@@ -44,7 +44,7 @@ METHODS
 
     Required arguments are:
 
-      output - a L<Message::Passing> OUTPUT class.
+      output - a L<Message::Passing> L<Output|Message::Passing::Role::Output> class.
 
   log_message
     This is the method which performs the actual logging, as detailed by
