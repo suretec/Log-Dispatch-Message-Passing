@@ -59,7 +59,7 @@ In your application code:
 
 On your central log server:
 
-  logstash --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output STDOUT > myapp_aggregate.log
+  message-pass --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output File --output_options '{"filename":"myapp_aggregate.log"}'
 
 =head1 DESCRIPTION
 
@@ -80,7 +80,7 @@ This method constructs a new Log::Dispatch::Message::Passing output object.
 
 Required arguments are:
 
-  output - a L<Message::Passing> OUTPUT class.
+  output - a L<Message::Passing> L<Output|Message::Passing::Role::Output> class.
 
 =head2 log_message
 

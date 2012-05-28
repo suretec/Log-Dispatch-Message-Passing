@@ -1,5 +1,5 @@
 #!/bin/sh
-logstash --input ZeroMQ \
+message-passing --input ZeroMQ \
  --input_options \
  '{"socket_bind":"tcp://*:5558"}' \
  --output STDOUT
