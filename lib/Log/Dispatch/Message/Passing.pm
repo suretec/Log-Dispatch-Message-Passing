@@ -6,7 +6,7 @@ use strict;
 use Scalar::Util qw/ blessed /;
 use Carp qw/ confess /;
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 sub new {
   my ($class, %arg) = @_;
