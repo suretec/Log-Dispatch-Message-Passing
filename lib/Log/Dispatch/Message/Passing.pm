@@ -40,33 +40,34 @@ In your application code:
 
   use Log::Dispatch;
   use Log::Dispatch::Message::Passing;
-  use Message::Passing::DSL;
+  use Message::Passing::Filter::Encoder::JSON;
+  use Message::Passing::Output::ZeroMQ;
 
   my $log = Log::Dispatch->new;
 
   $log->add(Log::Dispatch::Message::Passing->new(
         name      => 'myapp_aggregate_log',
         min_level => 'debug',
-        output    => log_chain {
-            output zmq => (
-                class => 'ZeroMQ',
+        output    => Message::Passing::Filter::Encoder::JSON->new(
+            output_to => Message::Passing::Output::ZeroMQ->new(
                 connect => 'tcp://192.168.0.1:5558',
-            );
-        },
+            ),
+        ),
   ));
 
   $log->warn($_) for qw/ foo bar baz /;
 
 On your central log server:
 
-  message-pass --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' --output File --output_options '{"filename":"myapp_aggregate.log"}'
+  message-pass --input ZeroMQ --input_options '{"socket_bind":"tcp://*:5558"}' \
+    --output File --output_options '{"filename":"myapp_aggregate.log"}'
 
 =head1 DESCRIPTION
 
-This provides a Log::Dispatch log output system that sends logged events to
+This provides a L<Log::Dispatch> log output system that sends logged events to
 L<Message::Passing>.
 
-This allows you to use any of the Message::Passing emitters or filters
+This allows you to use any of the Message::Passing outputs or filters
 to process log events and send them across the network, and you can use
 the toolkit to trivially construct a log aggregator.
 
