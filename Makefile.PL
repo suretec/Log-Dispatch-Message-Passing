@@ -14,7 +14,7 @@ resources(
     repository => "git://github.com/suretec/Log-Dispatch-Message-Passing.git",
 );
 
-requires 'Message::Passing';
+requires 'Message::Passing' => '0.006';
 requires 'Log::Dispatch';
 requires 'Scalar::util';
 
