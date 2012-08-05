@@ -16,7 +16,7 @@ resources(
 
 requires 'Message::Passing' => '0.006';
 requires 'Log::Dispatch';
-requires 'Scalar::util';
+requires 'Scalar::Util';
 
 test_requires 'Test::More' => '0.88';
 
