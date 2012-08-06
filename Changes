@@ -1,5 +1,4 @@
-0.006
-    - Fixed requires
+   - Fix broken dep in Makefile.PL RT#78799
 
 0.005
     - More doc and example fixes.
