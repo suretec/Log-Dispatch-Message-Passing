@@ -20,7 +20,7 @@ $log->add(Log::Dispatch::Message::Passing->new(
 $log->warn("foo");
 
 is $test->message_count, 1;
-is_deeply [$test->messages], [{level => 'warn', name => 'myapp_logstash', message => 'foo'}];
+is_deeply [$test->messages], [{level => 'warning', name => 'myapp_logstash', message => 'foo'}];
 
 done_testing;
 

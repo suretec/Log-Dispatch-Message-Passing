@@ -1,3 +1,6 @@
+   - Fix test - newer versions of Log::Dispatch
+     return 'warning' instead of 'warn'
+
 0.006
    - Fix broken dep in Makefile.PL RT#78799
 
