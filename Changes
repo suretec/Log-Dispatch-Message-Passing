@@ -1,3 +1,4 @@
+0.007
    - Fix test - newer versions of Log::Dispatch
      return 'warning' instead of 'warn'
 
