@@ -1,3 +1,7 @@
+0.009
+   - Revert change to work with upcoming versions of Log::Dispatch (perigrin)
+     - Upon conversation with Dave Rolskey they're not as upcoming
+
 0.008
    - Work with upcoming versions of Log::Dispatch
 
